@@ -13,3 +13,11 @@ class DBConfig:
     user = os.getenv("DB_USER")
     password = os.getenv("DB_PASSWORD")
     database = os.getenv("DB_NAME")
+
+
+@dataclass
+class RedisConfig:
+    host = os.getenv("REDIS_HOST")
+    port = os.getenv("REDIS_PORT")
+    user = os.getenv("REDIS_USER")
+    password = os.getenv("REDIS_PASSWORD")
