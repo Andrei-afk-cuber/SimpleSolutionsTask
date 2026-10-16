@@ -1,5 +1,5 @@
 import asyncio
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 import logging
 
 from sqlmodel import Session
@@ -25,7 +25,14 @@ def get_currency_task():
                 failed.append(ticker)
                 logging.error(f"{ticker}: {price}")
                 continue
-            session.add(Price(ticker=ticker, price=price, time_utc_now=time_utc))
+            session.add(
+                Price(
+                    ticker=ticker,
+                    price=price,
+                    time_utc_now=time_utc,
+                    save_date=date.today()
+                )
+            )
             saved.append(ticker)
         session.commit()
 
