@@ -6,7 +6,7 @@ router = APIRouter()
 
 # All saved data
 @router.get("/prices")
-def get_prices(ticker: str):
+def get_all_prices(ticker: str):
     pass
 
 
