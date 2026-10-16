@@ -21,7 +21,7 @@ app.conf.update(
 # update scheduler config
 app.conf.beat_schedule = {
     "currency-price-per-minute": {
-        "task": "app.client.tasks.get_currency",
+        "task": "app.client.tasks.get_currency_task",
         "schedule": crontab(),
     },
 }

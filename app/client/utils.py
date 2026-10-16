@@ -2,7 +2,7 @@ from aiohttp import ClientSession
 import asyncio
 
 # get currency by one ticker
-async def get_currency(session: ClientSession, ticker: str):
+async def get_currency(session: ClientSession, ticker: str) -> float:
     url = 'https://www.deribit.com/api/v2/public/get_index_price'
     params = {"index_name": ticker}
     async with session.get(url, params=params) as response:
@@ -12,7 +12,7 @@ async def get_currency(session: ClientSession, ticker: str):
 
 
 # get currencies by many tickers
-async def get_many_currencies(tickers: list):
+async def get_many_currencies(tickers: list) -> dict[str, float]:
     async with ClientSession() as session:
         results = await asyncio.gather(
             *[get_currency(session, ticker) for ticker in tickers],
