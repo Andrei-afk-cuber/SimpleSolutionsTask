@@ -28,7 +28,7 @@ def get_all_prices(
 
 
 # Last currency price
-@router.get("/last-price")
+@router.get("/last-price", response_model=Price)
 def get_price(session: SessionDep, ticker: Ticker = Ticker.btc_usd):
     price = session.exec(select(Price).where(Price.ticker == ticker).order_by(desc(Price.time_utc_now))).first()
     return price
